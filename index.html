@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <title>Hello, World!</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f3ee;
+      --ink: #17241f;
+      --green: #c9f36a;
+      --muted: #64716b;
+      --line: rgba(23, 36, 31, 0.18);
+      font-family: "Trebuchet MS", "Avenir Next", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: linear-gradient(rgba(23, 36, 31, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 36, 31, 0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(24px, 5vw, 64px);
+    }
+
+    .topbar, footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mark { display: flex; align-items: center; gap: 10px; }
+
+    .mark-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--ink);
+      border-radius: 50%;
+    }
+
+    .edition { color: var(--muted); }
+
+    .stage {
+      display: grid;
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      align-self: center;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+      align-items: center;
+      gap: clamp(40px, 8vw, 120px);
+      padding: 72px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(76px, 13vw, 176px);
+      font-weight: 400;
+      letter-spacing: -0.065em;
+      line-height: 0.82;
+    }
+
+    h1 span { display: block; }
+
+    h1 .second-line {
+      position: relative;
+      width: fit-content;
+      margin-top: 16px;
+      padding: 0 14px 12px 0;
+    }
+
+    h1 .second-line::after {
+      position: absolute;
+      z-index: -1;
+      right: -14px;
+      bottom: 0;
+      left: -12px;
+      height: 44%;
+      background: var(--green);
+      content: "";
+      transform: rotate(-2deg);
+    }
+
+    .prompt {
+      max-width: 370px;
+      padding-top: 8px;
+    }
+
+    .prompt p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    form { display: flex; border-bottom: 1px solid var(--ink); }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 16px 8px 16px 0;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+      font-size: 16px;
+    }
+
+    input::placeholder { color: #89928d; }
+
+    input:focus-visible { box-shadow: 0 2px 0 var(--green); }
+
+    button {
+      flex: 0 0 auto;
+      margin: 6px 0 6px 12px;
+      padding: 10px 16px;
+      border: 0;
+      color: var(--ink);
+      background: var(--green);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 160ms ease, transform 160ms ease;
+    }
+
+    button:hover { background: #b7e650; transform: translateY(-2px); }
+    button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+    .greeting {
+      min-height: 32px;
+      margin-top: 24px !important;
+      color: var(--ink) !important;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px !important;
+      line-height: 1.3 !important;
+    }
+
+    footer { flex-wrap: wrap; color: var(--muted); }
+
+    #visit-count { color: var(--ink); font-size: 18px; }
+
+    @media (max-width: 720px) {
+      main { padding: 24px; }
+      .stage { grid-template-columns: 1fr; gap: 48px; padding: 64px 0; }
+      h1 { font-size: clamp(76px, 19vw, 132px); }
+      .prompt { max-width: 440px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <div class="mark"><span class="mark-dot" aria-hidden="true"></span><span>Little beginnings</span></div>
+      <span class="edition">A small hello / No. 001</span>
+    </header>
+
+    <section class="stage" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">A good place to start</p>
+        <h1 id="page-title"><span>Hello,</span><span class="second-line">World!</span></h1>
+      </div>
+
+      <div class="prompt">
+        <p>Every big thing starts somewhere. Try yours here.</p>
+        <form id="greeting-form">
+          <label for="name" class="visually-hidden">Your name</label>
+          <input id="name" name="name" type="text" placeholder="Your name (optional)" autocomplete="given-name" maxlength="60">
+          <button type="submit">Say hello</button>
+        </form>
+        <p class="greeting" id="greeting" aria-live="polite">Hello, World.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>Made for the first line</span>
+      <span>Visits on this device: <strong id="visit-count">0</strong></span>
+      <span>Have a lovely day.</span>
+    </footer>
+  </main>
+
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script>
+    const form = document.querySelector("#greeting-form");
+    const nameInput = document.querySelector("#name");
+    const greeting = document.querySelector("#greeting");
+    const visitCount = document.querySelector("#visit-count");
+
+    const visits = Number.parseInt(localStorage.getItem("hello-world-visits") || "0", 10) + 1;
+    localStorage.setItem("hello-world-visits", visits);
+    visitCount.textContent = visits.toLocaleString();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = nameInput.value.trim();
+      greeting.textContent = name ? `Hello, ${name}!` : "Hello, World!";
+    });
+  </script>
+</body>
+</html>
